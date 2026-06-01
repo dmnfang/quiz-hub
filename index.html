@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#FEFAF0" />
+  <title>Quiz Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="hub-title">🎯 Quiz Hub</div>
+    <div class="hub-subtitle">Choose a quiz to get started</div>
+
+    <div class="quiz-grid">
+
+      <div class="quiz-card">
+        <div class="quiz-icon">📅</div>
+        <div class="quiz-info">
+          <div class="quiz-name">Schedule Quiz</div>
+          <div class="quiz-desc">Practice days of the week and school subjects</div>
+        </div>
+        <div class="quiz-actions">
+          <button class="qr-btn" onclick="showQR('https://dmnfang.github.io/schedule-quiz/', 'Schedule Quiz')">QR Code</button>
+          <a class="open-btn" href="https://dmnfang.github.io/schedule-quiz/" target="_blank">Open Quiz →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- QR Modal -->
+  <div class="qr-overlay" id="qr-overlay" onclick="hideQR()">
+    <div class="qr-modal" onclick="event.stopPropagation()">
+      <div class="qr-modal-title" id="qr-modal-title"></div>
+      <img class="qr-modal-img" id="qr-modal-img" src="" alt="QR Code" />
+      <div class="qr-modal-url" id="qr-modal-url"></div>
+      <button class="qr-close-btn" onclick="hideQR()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    function showQR(url, name) {
+      document.getElementById('qr-modal-title').textContent = name
+      document.getElementById('qr-modal-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(url)}`
+      document.getElementById('qr-modal-url').textContent = url
+      document.getElementById('qr-overlay').classList.add('active')
+    }
+    function hideQR() {
+      document.getElementById('qr-overlay').classList.remove('active')
+    }
+  </script>
+</body>
+</html>

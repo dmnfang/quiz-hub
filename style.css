@@ -1,0 +1,187 @@
+:root {
+  --surface-base:   #FEFAF0;
+  --surface-panel:  #F0E8D5;
+  --surface-card:   #FFFFFF;
+  --surface-inset:  #F5EFE3;
+  --text-primary:   #2D2A1E;
+  --text-secondary: #4A4636;
+  --text-muted:     #8C8472;
+  --text-inverse:   #FFFFFF;
+  --stroke-default: #DDD0BA;
+  --stroke-medium:  #C4B49A;
+  --green:          #4AA875;
+  --font-display:   'Fredoka', sans-serif;
+  --font-ui:        'Nunito', sans-serif;
+  --r-md:  12px;
+  --r-lg:  16px;
+  --r-xl:  24px;
+  --r-pill:9999px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0; padding: 0;
+}
+
+html, body {
+  width: 100%; min-height: 100vh;
+  background: var(--surface-base);
+  font-family: var(--font-ui);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hub-title {
+  font-family: var(--font-display);
+  font-size: 40px; font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.hub-subtitle {
+  font-size: 16px; font-weight: 600;
+  color: var(--text-muted);
+  margin-top: -12px;
+}
+
+.quiz-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quiz-card {
+  background: var(--surface-card);
+  border-radius: var(--r-xl);
+  border: 2px solid var(--stroke-default);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: border-color 0.15s;
+}
+
+.quiz-card:hover { border-color: var(--stroke-medium); }
+
+.quiz-icon {
+  font-size: 40px;
+  width: 64px; height: 64px;
+  background: var(--surface-inset);
+  border-radius: var(--r-lg);
+  display: flex; align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.quiz-info {
+  flex: 1; min-width: 0;
+  display: flex; flex-direction: column;
+  gap: 4px;
+}
+
+.quiz-name {
+  font-family: var(--font-display);
+  font-size: 24px; font-weight: 600;
+  color: var(--text-primary);
+}
+
+.quiz-desc {
+  font-size: 14px; font-weight: 600;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.quiz-actions {
+  display: flex; gap: 8px;
+  flex-shrink: 0;
+}
+
+.qr-btn {
+  height: 40px; padding: 0 20px;
+  border-radius: var(--r-pill);
+  background: var(--surface-inset);
+  border: 2px solid var(--stroke-default);
+  font-family: var(--font-ui);
+  font-size: 14px; font-weight: 800;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.qr-btn:hover { border-color: var(--stroke-medium); }
+
+.open-btn {
+  height: 40px; padding: 0 20px;
+  border-radius: var(--r-pill);
+  background: var(--green);
+  border: none;
+  font-family: var(--font-ui);
+  font-size: 14px; font-weight: 800;
+  color: var(--text-inverse);
+  text-decoration: none;
+  display: flex; align-items: center;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.open-btn:hover { opacity: 0.85; }
+
+/* QR Modal */
+.qr-overlay {
+  position: fixed; inset: 0;
+  background: rgba(45,42,30,0.6);
+  z-index: 100;
+  display: none;
+  align-items: center; justify-content: center;
+}
+
+.qr-overlay.active { display: flex; }
+
+.qr-modal {
+  background: var(--surface-card);
+  border-radius: var(--r-xl);
+  padding: 40px;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 16px;
+  max-width: 400px; width: 90%;
+}
+
+.qr-modal-title {
+  font-family: var(--font-display);
+  font-size: 24px; font-weight: 600;
+  color: var(--text-primary);
+}
+
+.qr-modal-img {
+  width: 280px; height: 280px;
+}
+
+.qr-modal-url {
+  font-size: 13px; font-weight: 700;
+  color: var(--text-muted);
+  text-align: center;
+  word-break: break-all;
+}
+
+.qr-close-btn {
+  height: 44px; padding: 0 32px;
+  border-radius: var(--r-pill);
+  background: var(--surface-inset);
+  border: 2px solid var(--stroke-default);
+  font-family: var(--font-ui);
+  font-size: 15px; font-weight: 800;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.qr-close-btn:hover { border-color: var(--stroke-medium); }
