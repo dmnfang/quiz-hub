@@ -238,7 +238,7 @@ button:active { opacity: 0.75; }
 
 .breadcrumb-home {
   font-family: var(--font-display);
-  font-size: 20px; font-weight: 600;
+  font-size: 22px; font-weight: 600;
   color: var(--text-muted);
   text-decoration: none;
   transition: color 0.15s;
@@ -247,12 +247,13 @@ button:active { opacity: 0.75; }
 .breadcrumb-home:hover { color: var(--text-primary); }
 
 .breadcrumb-sep {
-  font-size: 18px;
+  font-family: var(--font-display);
+  font-size: 22px;
   color: var(--text-disabled);
 }
 
 .breadcrumb-current {
   font-family: var(--font-display);
-  font-size: 20px; font-weight: 600;
+  font-size: 22px; font-weight: 600;
   color: var(--text-primary);
 }
