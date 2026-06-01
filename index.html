@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#FEFAF0">
+  <title>Quiz Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="hub-screen">
+    <div class="hub-topbar">
+      <div class="hub-title">🎯 Quiz Hub</div>
+      <div class="grade-toggle">
+        <button class="grade-btn active" data-grade="all">All</button>
+        <button class="grade-btn" data-grade="grade3">Grade 3</button>
+        <button class="grade-btn" data-grade="grade4">Grade 4</button>
+      </div>
+    </div>
+
+    <div class="hub-body">
+      <div class="quiz-panel">
+        <div class="panel-title">Choose a quiz</div>
+        <div class="quiz-list" id="quiz-list">
+
+          <div class="quiz-card" data-grade="grade4">
+            <div class="quiz-card-info">
+              <div class="quiz-card-name">Schedule Quiz</div>
+              <div class="quiz-card-tags">
+                <span class="tag tag-grade">Grade 4</span>
+                <span class="tag tag-unit">Unit 3</span>
+                <span class="tag tag-topic">Days of the Week</span>
+              </div>
+            </div>
+            <div class="quiz-card-actions">
+              <button class="qr-btn" onclick="showQR('https://dmnfang.github.io/schedule-quiz/', 'Schedule Quiz')">QR</button>
+              <a class="open-btn" href="https://dmnfang.github.io/schedule-quiz/" target="_blank">Open</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QR Modal -->
+  <div class="qr-overlay" id="qr-overlay" onclick="hideQR()">
+    <div class="qr-modal" onclick="event.stopPropagation()">
+      <div class="qr-modal-title" id="qr-modal-title"></div>
+      <img class="qr-modal-img" id="qr-modal-img" src="" alt="QR Code" />
+      <div class="qr-modal-url" id="qr-modal-url"></div>
+      <button class="qr-close-btn" onclick="hideQR()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const gradeButtons = document.querySelectorAll('.grade-btn')
+    const quizCards = document.querySelectorAll('.quiz-card')
+
+    gradeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        gradeButtons.forEach(b => b.classList.remove('active'))
+        btn.classList.add('active')
+        const grade = btn.dataset.grade
+        quizCards.forEach(card => {
+          if (grade === 'all' || card.dataset.grade === grade) {
+            card.style.display = 'flex'
+          } else {
+            card.style.display = 'none'
+          }
+        })
+      })
+    })
+
+    function showQR(url, name) {
+      document.getElementById('qr-modal-title').textContent = name
+      document.getElementById('qr-modal-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(url)}`
+      document.getElementById('qr-modal-url').textContent = url
+      document.getElementById('qr-overlay').classList.add('active')
+    }
+
+    function hideQR() {
+      document.getElementById('qr-overlay').classList.remove('active')
+    }
+  </script>
+</body>
+</html>
