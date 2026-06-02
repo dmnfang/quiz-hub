@@ -13,10 +13,10 @@
   <div class="hub-screen">
     <div class="hub-topbar">
       <div class="hub-breadcrumb">
-  <a class="breadcrumb-home" href="https://hiroba.ca">Hiroba</a>
-  <span class="breadcrumb-sep">›</span>
-  <span class="breadcrumb-current">Quiz Hub</span>
-</div>
+        <a class="breadcrumb-home" href="https://dmnfang.github.io">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current">Quiz Hub</span>
+      </div>
       <div class="grade-toggle">
         <button class="grade-btn active" data-grade="all">All</button>
         <button class="grade-btn" data-grade="grade3">Grade 3</button>
@@ -39,8 +39,7 @@
               </div>
             </div>
             <div class="quiz-card-actions">
-              <button class="qr-btn" onclick="showQR('https://hiroba.ca/schedule-quiz/', 'Schedule Quiz')">QR</button>
-              <a class="open-btn" href="https://hiroba.ca/schedule-quiz/" >Open</a>
+              <a class="open-btn" href="https://dmnfang.github.io/schedule-quiz/">Open</a>
             </div>
           </div>
 
@@ -54,23 +53,12 @@
               </div>
             </div>
             <div class="quiz-card-actions">
-              <button class="qr-btn" onclick="showQR('https://hiroba.ca/weather-quiz/', 'Weather Quiz')">QR</button>
-              <a class="open-btn" href="https://hiroba.ca/weather-quiz/" >Open</a>
+              <a class="open-btn" href="https://dmnfang.github.io/weather-quiz/">Open</a>
             </div>
           </div>
 
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- QR Modal -->
-  <div class="qr-overlay" id="qr-overlay" onclick="hideQR()">
-    <div class="qr-modal" onclick="event.stopPropagation()">
-      <div class="qr-modal-title" id="qr-modal-title"></div>
-      <img class="qr-modal-img" id="qr-modal-img" src="" alt="QR Code" />
-      <div class="qr-modal-url" id="qr-modal-url"></div>
-      <button class="qr-close-btn" onclick="hideQR()">Close</button>
     </div>
   </div>
 
@@ -92,17 +80,6 @@
         })
       })
     })
-
-    function showQR(url, name) {
-      document.getElementById('qr-modal-title').textContent = name
-      document.getElementById('qr-modal-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(url)}`
-      document.getElementById('qr-modal-url').textContent = url
-      document.getElementById('qr-overlay').classList.add('active')
-    }
-
-    function hideQR() {
-      document.getElementById('qr-overlay').classList.remove('active')
-    }
   </script>
 </body>
 </html>
